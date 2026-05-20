@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BBEditDocumentType</key>
+	<string>CodelessLanguageModule</string>
+	<key>BBLMLanguageCode</key>
+	<string>Odin</string>
+	<key>BBLMLanguageDisplayName</key>
+	<string>Odin</string>
+	<key>BBLMColorsSyntax</key>
+	<true/>
+	<key>BBLMIsCaseSensitive</key>
+	<true/>
+	<key>BBLMScansFunctions</key>
+	<false/>
+	<key>BBLMSupportsTextCompletion</key>
+	<true/>
+	<key>BBLMCommentLineDefault</key>
+	<string>//</string>
+	<key>BBLMCommentPrefixDefault</key>
+	<string>/*</string>
+	<key>BBLMCommentSuffixDefault</key>
+	<string>*/</string>
+	<key>BBLMPreferredFilenameExtension</key>
+	<string>odin</string>
+	<key>BBLMSuffixMap</key>
+	<array>
+		<dict>
+			<key>BBLMLanguageSuffix</key>
+			<string>.odin</string>
+		</dict>
+	</array>
+	<key>BBLMReferenceSearchURLTemplate</key>
+	<string>https://pkg.odin-lang.org/?q=*SYMBOLNAME*</string>
+
+	<key>Language Features</key>
+	<dict>
+		<!-- '#' is included so tokens like #partial and #bounds_check
+		     are recognised as single identifiers and can be matched
+		     against the predefined-name list below. -->
+		<key>Identifier and Keyword Character Class</key>
+		<string>A-Za-z0-9_#</string>
+
+		<!-- Regex string pattern: covers all three of Odin's literal
+		     forms in one pass:
+		       "..."   double-quoted, with \ escapes, no newline
+		       `...`   raw / backtick, may span lines, no escapes
+		       '...'   rune literal, with \ escapes -->
+		<key>String Pattern</key>
+		<string><![CDATA[
+		(?x:
+		  ( " (?: \\. | [^"\\\r\n] )* " )
+		| ( ` [^`]* ` )
+		| ( ' (?: \\. | [^'\\\r\n] )* ' )
+		)
+		]]></string>
+
+		<!-- Regex comment pattern. Note: Odin permits nested block
+		     comments; PCRE without recursion can't track nesting, so
+		     this matches up to the first */ . Single-level block
+		     comments work fine. -->
+		<key>Comment Pattern</key>
+		<string><![CDATA[
+		(?x:
+		  ( // .*? $ )
+		| (?s: /\* .*? \*/ )
+		)
+		]]></string>
+
+		<key>Open Statement Blocks</key>
+		<string>{</string>
+		<key>Close Statement Blocks</key>
+		<string>}</string>
+		<key>Open Parameter Lists</key>
+		<string>(</string>
+		<key>Close Parameter Lists</key>
+		<string>)</string>
+	</dict>
+
+	<key>BBLMKeywordList</key>
+	<array>
+		<!-- control flow -->
+		<string>break</string>
+		<string>case</string>
+		<string>continue</string>
+		<string>defer</string>
+		<string>do</string>
+		<string>else</string>
+		<string>fallthrough</string>
+		<string>for</string>
+		<string>if</string>
+		<string>return</string>
+		<string>switch</string>
+		<string>when</string>
+		<string>where</string>
+		<!-- error / value chaining -->
+		<string>or_break</string>
+		<string>or_continue</string>
+		<string>or_else</string>
+		<string>or_return</string>
+		<!-- declarations -->
+		<string>package</string>
+		<string>import</string>
+		<string>foreign</string>
+		<string>proc</string>
+		<string>struct</string>
+		<string>enum</string>
+		<string>union</string>
+		<string>bit_field</string>
+		<string>bit_set</string>
+		<string>map</string>
+		<string>matrix</string>
+		<!-- modifiers / operators -->
+		<string>using</string>
+		<string>distinct</string>
+		<string>dynamic</string>
+		<string>in</string>
+		<string>not_in</string>
+		<string>cast</string>
+		<string>transmute</string>
+		<string>auto_cast</string>
+		<string>context</string>
+		<string>asm</string>
+		<string>inline</string>
+		<string>no_inline</string>
+	</array>
+
+	<key>BBLMPredefinedNameList</key>
+	<array>
+		<!-- literals -->
+		<string>true</string>
+		<string>false</string>
+		<string>nil</string>
+
+		<!-- integer types -->
+		<string>int</string>
+		<string>uint</string>
+		<string>uintptr</string>
+		<string>i8</string>
+		<string>i16</string>
+		<string>i32</string>
+		<string>i64</string>
+		<string>i128</string>
+		<string>u8</string>
+		<string>u16</string>
+		<string>u32</string>
+		<string>u64</string>
+		<string>u128</string>
+		<string>i16le</string>
+		<string>i32le</string>
+		<string>i64le</string>
+		<string>i128le</string>
+		<string>u16le</string>
+		<string>u32le</string>
+		<string>u64le</string>
+		<string>u128le</string>
+		<string>i16be</string>
+		<string>i32be</string>
+		<string>i64be</string>
+		<string>i128be</string>
+		<string>u16be</string>
+		<string>u32be</string>
+		<string>u64be</string>
+		<string>u128be</string>
+		<!-- floating point -->
+		<string>f16</string>
+		<string>f32</string>
+		<string>f64</string>
+		<string>f16le</string>
+		<string>f32le</string>
+		<string>f64le</string>
+		<string>f16be</string>
+		<string>f32be</string>
+		<string>f64be</string>
+		<!-- complex / quaternion -->
+		<string>complex32</string>
+		<string>complex64</string>
+		<string>complex128</string>
+		<string>quaternion64</string>
+		<string>quaternion128</string>
+		<string>quaternion256</string>
+		<!-- bool / char / string -->
+		<string>bool</string>
+		<string>b8</string>
+		<string>b16</string>
+		<string>b32</string>
+		<string>b64</string>
+		<string>byte</string>
+		<string>rune</string>
+		<string>string</string>
+		<string>cstring</string>
+		<!-- misc built-in types -->
+		<string>rawptr</string>
+		<string>typeid</string>
+		<string>any</string>
+
+		<!-- common built-in procs -->
+		<string>len</string>
+		<string>cap</string>
+		<string>size_of</string>
+		<string>align_of</string>
+		<string>offset_of</string>
+		<string>offset_of_selector</string>
+		<string>offset_of_member</string>
+		<string>offset_of_by_string</string>
+		<string>type_of</string>
+		<string>type_info_of</string>
+		<string>typeid_of</string>
+		<string>swizzle</string>
+		<string>complex</string>
+		<string>quaternion</string>
+		<string>real</string>
+		<string>imag</string>
+		<string>jmag</string>
+		<string>kmag</string>
+		<string>conj</string>
+		<string>expand_values</string>
+		<string>min</string>
+		<string>max</string>
+		<string>abs</string>
+		<string>clamp</string>
+		<string>soa_zip</string>
+		<string>soa_unzip</string>
+		<string>raw_data</string>
+		<string>new</string>
+		<string>new_clone</string>
+		<string>make</string>
+		<string>make_slice</string>
+		<string>make_dynamic_array</string>
+		<string>make_map</string>
+		<string>delete</string>
+		<string>free</string>
+		<string>free_all</string>
+		<string>append</string>
+		<string>append_elem</string>
+		<string>append_elems</string>
+		<string>append_string</string>
+		<string>append_nothing</string>
+		<string>clear</string>
+		<string>reserve</string>
+		<string>resize</string>
+		<string>copy</string>
+		<string>copy_slice</string>
+		<string>copy_from_string</string>
+		<string>pop</string>
+		<string>pop_safe</string>
+		<string>pop_front</string>
+		<string>pop_front_safe</string>
+		<string>unordered_remove</string>
+		<string>ordered_remove</string>
+		<string>remove_range</string>
+		<string>inject_at</string>
+		<string>assign_at</string>
+		<string>card</string>
+		<string>assert</string>
+		<string>assert_contextless</string>
+		<string>panic</string>
+		<string>panic_contextless</string>
+		<string>unimplemented</string>
+		<string>unimplemented_contextless</string>
+		<string>container_of</string>
+
+		<!-- # compiler directives (tokenised as a single identifier
+		     because '#' is in the character class above) -->
+		<string>#align</string>
+		<string>#any_int</string>
+		<string>#assert</string>
+		<string>#bounds_check</string>
+		<string>#by_ptr</string>
+		<string>#c_vararg</string>
+		<string>#caller_location</string>
+		<string>#config</string>
+		<string>#const</string>
+		<string>#defined</string>
+		<string>#exists</string>
+		<string>#fallthrough</string>
+		<string>#file</string>
+		<string>#force_inline</string>
+		<string>#force_no_inline</string>
+		<string>#hash</string>
+		<string>#line</string>
+		<string>#load</string>
+		<string>#load_directory</string>
+		<string>#load_hash</string>
+		<string>#load_or</string>
+		<string>#location</string>
+		<string>#no_alias</string>
+		<string>#no_bounds_check</string>
+		<string>#no_broadcast</string>
+		<string>#no_capture</string>
+		<string>#no_copy</string>
+		<string>#no_nil</string>
+		<string>#no_type_assert</string>
+		<string>#optional_allocator_error</string>
+		<string>#optional_ok</string>
+		<string>#packed</string>
+		<string>#panic</string>
+		<string>#partial</string>
+		<string>#procedure</string>
+		<string>#raw_union</string>
+		<string>#relative</string>
+		<string>#reverse</string>
+		<string>#shared_nil</string>
+		<string>#simd</string>
+		<string>#soa</string>
+		<string>#sparse</string>
+		<string>#subtype</string>
+		<string>#type</string>
+		<string>#type_assert</string>
+		<string>#unroll</string>
+
+		<!-- Distinctive @(...) attribute names. Included so they
+		     light up inside an attribute like @(require_results) or
+		     @(link_name="foo"). Plain-English names that could also
+		     appear as ordinary identifiers (private, init, test,
+		     cold, export, builtin) are deliberately left out to
+		     avoid false positives in normal code. -->
+		<string>require_results</string>
+		<string>deferred_in</string>
+		<string>deferred_none</string>
+		<string>deferred_out</string>
+		<string>deferred_in_out</string>
+		<string>link_name</string>
+		<string>link_prefix</string>
+		<string>link_section</string>
+		<string>extra_linker_flags</string>
+		<string>default_calling_convention</string>
+		<string>optimization_mode</string>
+		<string>thread_local</string>
+		<string>rodata</string>
+		<string>objc_name</string>
+		<string>objc_type</string>
+		<string>objc_is_class_method</string>
+		<string>objc_class</string>
+		<string>instrumentation_enter</string>
+		<string>instrumentation_exit</string>
+		<string>no_instrumentation</string>
+	</array>
+</dict>
+</plist>

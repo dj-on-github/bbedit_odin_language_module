@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Editor canvas -->
+	<key>BackgroundColor</key>
+	<string>rgba(0.102, 0.090, 0.129, 1.0)</string>
+	<key>ForegroundColor</key>
+	<string>rgba(0.910, 0.890, 0.847, 1.0)</string>
+	<key>InsertionPointLineHighlightColor</key>
+	<string>rgba(0.137, 0.122, 0.169, 1.0)</string>
+	<key>Color:HighlightInsertionPoint</key>
+	<string>1</string>
+	<key>Color:UseCustomHighlight</key>
+	<string>1</string>
+
+	<!-- Selection / search highlights -->
+	<key>PrimaryHighlightColor</key>
+	<string>rgba(0.298, 0.247, 0.376, 1.0)</string>
+	<key>SecondaryHighlightColor</key>
+	<string>rgba(0.220, 0.196, 0.275, 1.0)</string>
+
+	<!-- Syntax categories (these are what the Odin.plist exposes) -->
+	<key>KeywordsColor</key>
+	<string>rgba(0.780, 0.573, 0.918, 1.0)</string>
+	<key>PredefinedNamesColor</key>
+	<string>rgba(0.510, 0.847, 0.847, 1.0)</string>
+	<key>StringColor</key>
+	<string>rgba(0.902, 0.753, 0.482, 1.0)</string>
+	<key>CommentsColor</key>
+	<string>rgba(0.420, 0.482, 0.420, 1.0)</string>
+	<key>NumericConstantColor</key>
+	<string>rgba(1.000, 0.561, 0.439, 1.0)</string>
+	<key>CtagsIdentifierColor</key>
+	<string>rgba(0.580, 0.831, 0.610, 1.0)</string>
+
+	<!-- Invisible characters -->
+	<key>(null)_Spaces</key>
+	<string>rgba(0.350, 0.330, 0.400, 1.0)</string>
+	<key>(null)_Other</key>
+	<string>rgba(0.745, 0.337, 0.337, 1.0)</string>
+
+	<!-- HTML / markup colours (not used by Odin, set so the scheme
+	     looks consistent if you switch buffers) -->
+	<key>HTMLTagColor</key>
+	<string>rgba(0.510, 0.847, 0.847, 1.0)</string>
+	<key>HTMLAttributeNameColor</key>
+	<string>rgba(0.878, 0.690, 0.090, 1.0)</string>
+	<key>HTMLAttributeValueColor</key>
+	<string>rgba(0.902, 0.753, 0.482, 1.0)</string>
+	<key>HTMLAnchorColor</key>
+	<string>rgba(0.780, 0.573, 0.918, 1.0)</string>
+	<key>HTMLImageColor</key>
+	<string>rgba(0.510, 0.847, 0.847, 1.0)</string>
+	<key>HTMLProcessingDirectiveColor</key>
+	<string>rgba(0.420, 0.482, 0.420, 1.0)</string>
+</dict>
+</plist>
